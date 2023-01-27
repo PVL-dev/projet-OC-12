@@ -1,0 +1,70 @@
+.dashboard-container {
+    margin-left: 117px;
+    height: calc(100vh - 91px);
+
+    .hello-container {
+        height: 15%;
+
+        font-size: 24px;
+    }
+
+    .main-tiles-container {
+        height: 85%;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .graphs-container {
+            display: flex;
+            flex-direction: column;
+
+            &__activities {
+                margin-bottom: 20px;
+
+                background-color: $color-grey;
+                border-radius: 5px;
+            }
+
+            &__squares {
+                display: flex;
+                justify-content: space-between;
+                
+                > div {
+                    border-radius: 5px;
+                }
+                > :not(:last-child) {
+                    margin-right: 20px;
+                }
+
+                &__duration {
+                    background-color: $color-red;
+                }
+                &__radar {
+                    background-color: $color-darkgrey;
+                }
+                &__score {
+                    background-color: $color-grey;
+                }
+            }
+        }
+
+        .nutrition-container {
+            margin-left: 20px;
+
+            display: flex;
+            flex-direction: column;
+
+            > div {
+                background-color: $color-grey;
+                border-radius: 5px;
+            }
+            > :not(:last-child) {
+                margin-bottom: 35px;
+            }
+        }
+    }
+}
+

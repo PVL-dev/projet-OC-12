@@ -1,68 +1,125 @@
-.dashboard-container {
+.dashboard {
     margin-left: 117px;
-    height: calc(100vh - 91px);
+    min-width: 967px;
 
-    .hello-container {
-        height: 15%;
+    display: flex;
+    justify-content: center;
 
-        font-size: 24px;
-    }
-
-    .main-tiles-container {
-        height: 85%;
+    .dashboard-container {
         margin-left: 20px;
         margin-right: 20px;
+        height: calc(100vh - 91px);
+        min-height: 689px;
+        width: calc(100vw - 117px);
+        min-width: 927px;
+        max-width: 1200px;
 
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
 
-        .graphs-container {
+    
+        .hello-container {
+            margin-top: 2%;
+            height: 11%;
+            max-width: 1370px;
+    
+            font-size: 24px;
+
             display: flex;
             flex-direction: column;
-
-            &__activities {
-                margin-bottom: 20px;
-
-                background-color: $color-grey;
-                border-radius: 5px;
-            }
-
-            &__squares {
+            justify-content: space-between;
+    
+            &__title {
                 display: flex;
-                justify-content: space-between;
-                
-                > div {
-                    border-radius: 5px;
+    
+                h2 {
+                    margin-right: 7px;
                 }
-                > :not(:last-child) {
-                    margin-right: 20px;
+                .name {
+                    color: $color-red;
                 }
-
-                &__duration {
-                    background-color: $color-red;
-                }
-                &__radar {
-                    background-color: $color-darkgrey;
-                }
-                &__score {
-                    background-color: $color-grey;
-                }
+            }
+            
+            p {
+                width: 100%;
+    
+                font-size: 18px;
             }
         }
-
-        .nutrition-container {
-            margin-left: 20px;
-
+    
+        .main-tiles-container {
+            margin-top: 4%;
+            height: 83%;
+            min-width: 930px;
+            max-width: 1370px;
+    
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+    
+            .graphs-container {
+                height: 95%;
+                max-height: 603px;
+                width: calc(78% - 20px);
 
-            > div {
-                background-color: $color-grey;
-                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                
+                &__activities {
+                    height: calc(55% - 20px);
+                    margin-bottom: 20px;
+                    
+                    background-color: $color-lightgray;
+                    border-radius: 5px;
+                }
+    
+                &__squares {
+                    height: 45%;
+                    max-height: 263px;
+
+                    display: flex;
+                    justify-content: space-between;
+                    
+                    > div {
+                        height: 100%;
+                        width: calc(100% / 3 - 15px);
+                        min-width: 230px;
+                        max-width: 258px;
+                        
+                        border-radius: 6px;
+                    }
+    
+                    &__sessions {
+                        background-color: $color-red;
+                    }
+                    &__performance {
+                        background-color: $color-darkgray;
+                    }
+                    &__score {
+                        position: relative;
+                        
+                        background-color: $color-lightgray;
+                    }
+                }
             }
-            > :not(:last-child) {
-                margin-bottom: 35px;
+    
+            .nutrition-container {
+                margin-left: 20px;
+                height: 100%;
+                max-height: 603px;
+                width: 22%;
+                
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+    
+                > div {
+                    width: 100%;
+                    min-height: 124px;
+
+                    background-color: $color-lightgray;
+                    border-radius: 5px;
+                }
             }
         }
     }

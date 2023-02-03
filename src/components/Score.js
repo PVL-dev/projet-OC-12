@@ -1,10 +1,68 @@
 import React from 'react';
+import { ResponsiveContainer, RadialBarChart, PolarAngleAxis, RadialBar, Legend } from 'recharts';
 
 const Score = () => {
+    const data = [
+        {score: 16, fillValue: 100}
+    ]
+
+    const CustomLegend = ({ payload }) => {
+        if (payload && payload.length) {
+            return (
+                <div className="container-legend-score">
+                    <p className="text-percentage">{payload[0].payload.value}%</p>
+                    <p className="text-p">de votre</p>
+                    <p className="text-p">objectif</p>
+                </div>
+            );
+        };
+    };
+
     return (
-        <div className="score-container">
-            <h1>Test 3</h1>
-        </div>
+        <React.Fragment>
+            <div className="score-chart__background"></div>
+
+            <ResponsiveContainer className="score-chart__graph" width="100%" height="100%">
+                <RadialBarChart
+                    cx="50%"
+                    cy="50%"
+                    innerRadius="70%"
+                    outerRadius="80%"
+                    barSize={10}
+                    data={data}
+                    startAngle={90}
+                    endAngle={450}
+                >
+                    <text
+                        className="text-title"
+                        x="30"
+                        y="30"
+                        textAnchor="start"
+                        dominantBaseline="hanging"
+                    >
+                        Score
+                    </text>
+
+                    <PolarAngleAxis
+                        type="number"
+                        domain={[0, 100]}
+                        angleAxisId={0}
+                        tick={false}
+                    />
+
+                    <RadialBar 
+                        background={false}
+                        dataKey="score"
+                        cornerRadius={'60%'}
+                    />
+
+                    <Legend 
+                        verticalAlign="middle"
+                        content={CustomLegend}
+                    />
+                </RadialBarChart>
+            </ResponsiveContainer>
+        </React.Fragment>
     );
 };
 

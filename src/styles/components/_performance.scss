@@ -1,0 +1,17 @@
+.performance-chart__graph {
+    .recharts-surface {
+        .recharts-polar-grid-angle {
+            display: none;
+        }
+        
+        .recharts-radar-polygon path {
+            fill: $color-red;
+            fill-opacity: 70%;
+        }
+
+        text {
+            font-size: 12px;
+        }
+    }
+}
+

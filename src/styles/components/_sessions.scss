@@ -1,0 +1,25 @@
+.sessions-chart__graph {
+    .recharts-surface {
+        text {
+            opacity: 50%;
+        }
+
+        /*.recharts-xAxis {
+            transform: scaleX(90%) translateX(15px);
+        }*/
+    }
+    .custom-tooltip {
+        width: 39px;
+        height: 25px;
+    
+        background-color: $color-white;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        font-size: 10px;
+        color: $color-black;
+    }
+}
+

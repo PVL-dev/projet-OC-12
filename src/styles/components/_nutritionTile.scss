@@ -1,17 +1,17 @@
 .nutrition-container__tile {
-    min-width: 258px;
-    min-height: 124px;
     display: flex;
+    justify-content: space-around;
     align-items: center;
 
     &__icon {
         width: 60px;
         height: 60px;
-        margin-left: 32px;
+        margin-left: 10%;
+        margin-right: 8%;
 
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
 
         border-radius: 6px;
     }
@@ -29,18 +29,17 @@
     }
 
     &__text {
-        margin-left: 24px;
-
+        margin-right: 10%;
         &-value {
             font-size: 20px;
             font-weight: 600;
 
             margin-bottom: 2px;
         }
-
-        &_type {
+        &-type {
             font-size: 14px;
             font-weight: 400;
+            color: $color-gray;
         }
     }
 }

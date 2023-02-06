@@ -1,6 +1,11 @@
 import axios from "axios";
 import mockedDatas from "./mockedDatas";
 
+/**
+ * @param {number} user Id
+ * @return {object} this object group user infos as { user, activity, averageSessions, performance }
+ */
+
 export const getUserData = async (userId) => {
     const url = "http://localhost:3005/user/";
     try {
@@ -23,8 +28,8 @@ export const getUserData = async (userId) => {
     };
 };
 
-const Mocker = (id) => {
-    const userId = parseInt(id);
+const Mocker = (Id) => {
+    const userId = parseInt(Id);
   
     const user = mockedDatas.USER_MAIN_DATA.filter(
       	(user) => user.id === userId
@@ -39,7 +44,7 @@ const Mocker = (id) => {
       	(userPerformance) => userPerformance.userId === userId
     ).shift();
 	
-    console.log("Utilisation des données mockées : ", user, activity, averageSessions, performance);
+    console.log("Essai avec les données mockées : ", user, activity, averageSessions, performance);
   
     return { user, activity, averageSessions, performance };
 };

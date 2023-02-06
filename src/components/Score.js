@@ -1,10 +1,10 @@
 import React from 'react';
 import { ResponsiveContainer, RadialBarChart, PolarAngleAxis, RadialBar, Legend } from 'recharts';
+import DatasFormater from '../services/DatasFormater';
 
-const Score = () => {
-    const data = [
-        {score: 16, fillValue: 100}
-    ]
+const Score = ({data}) => {
+    const recoverDatas = new DatasFormater();
+    const datas = recoverDatas.scoreDatas(data);
 
     const CustomLegend = ({ payload }) => {
         if (payload && payload.length) {
@@ -29,7 +29,7 @@ const Score = () => {
                     innerRadius="70%"
                     outerRadius="80%"
                     barSize={10}
-                    data={data}
+                    data={datas}
                     startAngle={90}
                     endAngle={450}
                 >

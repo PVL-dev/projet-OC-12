@@ -1,19 +1,10 @@
 import React from 'react';
 import { ResponsiveContainer, BarChart, XAxis, YAxis, CartesianGrid, Bar, Tooltip, Legend } from 'recharts';
+import DatasFormater from '../services/DatasFormater';
 
-const Activities = () => {
-    const data = [
-        {day: "1", kilogram: "70", calories: "240"},
-        {day: "2", kilogram: "69", calories: "220"},
-        {day: "3", kilogram: "70", calories: "280"},
-        {day: "4", kilogram: "70", calories: "500"},
-        {day: "5", kilogram: "69", calories: "160"},
-        {day: "6", kilogram: "69", calories: "162"},
-        {day: "7", kilogram: "69", calories: "390"},
-        {day: "8", kilogram: "68", calories: "350"},
-        {day: "9", kilogram: "69", calories: "310"},
-        {day: "10", kilogram: "70", calories: "340"}
-    ]
+const Activities = ({data}) => {
+    const recoverDatas = new DatasFormater();
+    const datas = recoverDatas.activitiesDatas(data);
     
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -49,9 +40,7 @@ const Activities = () => {
     return (
         <div className="activities-chart">
             <ResponsiveContainer className="activities-chart__graph" width="100%" height="100%">
-                <BarChart width="100%" height="100%" data={data}>
-                
-
+                <BarChart width="100%" height="100%" data={datas}>
                     <Legend
                         
                         verticalAlign="top"
@@ -79,7 +68,7 @@ const Activities = () => {
                     <CartesianGrid vertical={false} strokeDasharray="4 4"/>
                     <Bar
                         className="recharts-bar-kilos"
-                        dataKey={"kilogram"}
+                        dataKey={"kilos"}
                         barSize={6}
                         radius={[10, 10, 0, 0]}
                         yAxisId="kilos"
@@ -104,15 +93,4 @@ const Activities = () => {
 };
 
 export default Activities;
-
-
-/* 
-ResponsiveContainer = Container général Responsive.
-BarChart = Container général du graphique.
-Bar = Barres, une barre kilo + une barre calories (x10).
-YAxis = Axe des Y (Kilos).
-XAxis = Axe des X (Calories).
-CartesianGrid = Grille de background qui correspond à l'axe des Y (Kilos).
-ToolTip = Affichage des données au Hover (Petite fenêtre en superposition).
-*/
 

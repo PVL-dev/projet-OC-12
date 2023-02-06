@@ -1,23 +1,18 @@
 import React from 'react';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
+import DatasFormater from '../services/DatasFormater';
 
-const Performance = () => {
-    const data = [
-        {subject: "Intensité", value: "30"},
-        {subject: "Vitesse", value: "40"},
-        {subject: "Force", value: "50"},
-        {subject: "Endurance", value: "30"},
-        {subject: "Énergie", value: "30"},
-        {subject: "Cardio", value: "50"}
-    ]
+const Performance = ({data}) => {
+    const recoverDatas = new DatasFormater();
+    const datas = recoverDatas.performanceDatas(data);
 
     return (
         <ResponsiveContainer className="performance-chart__graph" width="100%" height="100%">
-            <RadarChart cx="50%" cy="50%" outerRadius="68%" data={data}>
+            <RadarChart cx="50%" cy="50%" outerRadius="68%" data={datas}>
                 <PolarGrid stroke="white" />
                 <PolarAngleAxis
                     stroke="white"
-                    dataKey={"subject"}
+                    dataKey={"category"}
                     tick={{ fontSize: '10px' }}
                     tickLine={false}
                 />

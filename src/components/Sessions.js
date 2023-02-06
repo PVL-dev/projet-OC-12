@@ -1,16 +1,10 @@
 import React from 'react';
 import { ResponsiveContainer, LineChart, XAxis, YAxis, Line, Tooltip, Rectangle } from 'recharts';
+import DatasFormater from '../services/DatasFormater';
 
-const Sessions = () => {
-    const data = [
-        {abbreviatedDay: "L", duration: "30"},
-        {abbreviatedDay: "M", duration: "40"},
-        {abbreviatedDay: "M", duration: "50"},
-        {abbreviatedDay: "J", duration: "30"},
-        {abbreviatedDay: "V", duration: "30"},
-        {abbreviatedDay: "S", duration: "50"},
-        {abbreviatedDay: "D", duration: "50"}
-    ]
+const Sessions = ({data}) => {
+    const recoverDatas = new DatasFormater();
+    const datas = recoverDatas.sessionsDatas(data);
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -39,7 +33,7 @@ const Sessions = () => {
     
     return (
         <ResponsiveContainer className="sessions-chart__graph" width="100%" height="100%">
-            <LineChart width="100%" height="100%" data={data} margin={0}>
+            <LineChart width="100%" height="100%" data={datas} margin={0}>
                 <XAxis
                     dataKey={"abbreviatedDay"}
                     axisLine={false}
@@ -47,7 +41,7 @@ const Sessions = () => {
                     width={20}
                     tick={{ fontSize: '10px', fill: 'white' }}
                     dy={-10}
-                    //padding={{ left: 20, right: 20 }}
+                    padding={{ left: 20, right: 20 }}
                     interval="preserveStartEnd"
                 />
                 <YAxis 

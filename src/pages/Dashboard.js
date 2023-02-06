@@ -1,28 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getUserData } from '../services/API-Rest';
+import LoadingPage from './LoadingPage';
+import ErrorPage from './ErrorPage';
 import Activities from '../components/Activities';
 import Sessions from '../components/Sessions';
 import Performance from '../components/Performance';
 import Score from '../components/Score';
 import NutritionTile from '../components/NutritionTile';
-import { initFormatDatas, formattedDatas } from '../services/DatasFormater';
-import LoadingPage from './LoadingPage';
-import ErrorPage from './ErrorPage';
 
 const Dashboard = () => {
     const {id} = useParams();
+    const [userData, setUserData] = useState(null);
     const [pageState, setPageState] = useState("Loading");
-    const displayDatas = async () => {
-        await initFormatDatas(id);
+    
+    const errorCheck = (error) => {
+        console.log("Erreur API : ", error);
+        setPageState("ErrorAPI");
+    };
 
-        setPageState(formattedDatas.pageStatus);
-        console.log("Page state :", pageState);
+    const responseCheck = (response) => {
+        console.log("Données récupérées : ", response);
+        if (response.user === undefined) {
+            return errorCheck("Utilisateur inconnu");
+        } else {
+            setPageState("Dashboard");
+            setUserData(response);
+            return;
+        };
+    };
+
+    const displayDatas = async () => {
+        await getUserData(id)
+        .then((response) => responseCheck(response))
+        .catch((error) => errorCheck(error));
     };
 
     useEffect(() => {
         displayDatas();
-    });
-
+        // eslint-disable-next-line
+    }, []);
 
     const DashboardContent = () => {
         switch (pageState) {
@@ -37,7 +54,7 @@ const Dashboard = () => {
                         <div className="hello-container">
                             <div className="hello-container__title">
                                 <h2>Bonjour</h2>
-                                <h2 className="name">{formattedDatas.userInfos.firstName}</h2>
+                                <h2 className="name">{userData.user.userInfos.firstName}</h2>
                             </div>
                             <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
                         </div>
@@ -45,34 +62,34 @@ const Dashboard = () => {
                         <div className="main-tiles-container">
                             <div className="graphs-container">
                                 <div className="graphs-container__activities">
-                                    <Activities data={formattedDatas.activities}/>
+                                    <Activities data={userData.activity}/>
                                 </div>
             
                                 <div className="graphs-container__squares">
                                     <div className="graphs-container__squares__sessions">
-                                        <Sessions data={formattedDatas.sessions}/>
+                                        <Sessions data={userData.averageSessions}/>
                                     </div>
                                     <div className="graphs-container__squares__performance">
-                                        <Performance data={formattedDatas.performance}/>
+                                        <Performance data={userData.performance}/>
                                     </div>
                                     <div className="graphs-container__squares__score">
-                                        <Score data={formattedDatas.todayScore}/>
+                                        <Score data={userData.user.todayScore}/>
                                     </div>
                                 </div>
                             </div>
             
                             <div className="nutrition-container">
-                                <NutritionTile type="calories" data={formattedDatas.keyData}/>
-                                <NutritionTile type="proteins" data={formattedDatas.keyData}/>
-                                <NutritionTile type="carbohydrates" data={formattedDatas.keyData}/>
-                                <NutritionTile type="fats" data={formattedDatas.keyData}/>
+                                <NutritionTile type="calories" data={userData.user.keyData}/>
+                                <NutritionTile type="proteins" data={userData.user.keyData}/>
+                                <NutritionTile type="carbohydrates" data={userData.user.keyData}/>
+                                <NutritionTile type="fats" data={userData.user.keyData}/>
                             </div>
                         </div>
                     </div>
                 </div>
             );
         default:
-            console.log("Erreur");
+            console.log("Erreur Page Status");
         };
     };
 

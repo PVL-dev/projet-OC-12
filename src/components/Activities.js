@@ -42,7 +42,6 @@ const Activities = ({data}) => {
             <ResponsiveContainer className="activities-chart__graph" width="100%" height="100%">
                 <BarChart width="100%" height="100%" data={datas}>
                     <Legend
-                        
                         verticalAlign="top"
                         content={CustomLegend}
                     />

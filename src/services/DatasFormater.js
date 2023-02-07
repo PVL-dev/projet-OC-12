@@ -9,12 +9,15 @@ export default class DatasFormater {
 
 
     sessionsDatas(data) {
-        const abbreviatedDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+        const abbreviatedDays = ["L", "M", "M", "J", "V", "S", "D"];
 
-        return data.sessions.map((elmt, i) => ({
-            abbreviatedDay: abbreviatedDays[i],
-            duration: elmt.sessionLength
-        }));
+        return data.sessions.map((elmt, i) => {
+            const datas = elmt.sessionLength;
+            return ({
+                abbreviatedDay: abbreviatedDays[i],
+                duration: datas
+            })
+        });
     };
 
 
@@ -49,7 +52,7 @@ export default class DatasFormater {
                 kind: kind,
                 value: value,
                 order: sortingOrder
-            })
+            });
         });
         
         return datasArray.sort(
@@ -61,9 +64,17 @@ export default class DatasFormater {
     
 
     scoreDatas(data) {
+        let value = null;
+
+        if (data.todayScore) {
+            value = data.todayScore;
+        } else {
+            value = data.score;
+        };
+
         return [
             {
-                score: data * 100, 
+                score: value * 100,
                 fillValue: 100
             }
         ];

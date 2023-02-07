@@ -73,7 +73,7 @@ const Dashboard = () => {
                                         <Performance data={userData.performance}/>
                                     </div>
                                     <div className="graphs-container__squares__score">
-                                        <Score data={userData.user.todayScore}/>
+                                        <Score data={userData.user}/>
                                     </div>
                                 </div>
                             </div>

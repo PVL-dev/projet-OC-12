@@ -9,9 +9,9 @@ const Sessions = ({data}) => {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
-              <div className="custom-tooltip">
-                <p className="custom-tooltip__kilos">{`${payload[0].value} min`}</p>
-              </div>
+                <div className="custom-tooltip">
+                    <p className="custom-tooltip__kilos">{`${payload[0].value} min`}</p>
+                </div>
             );
         };
     };

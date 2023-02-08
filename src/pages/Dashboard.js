@@ -13,10 +13,12 @@ const Dashboard = () => {
     const {id} = useParams();
     const [userData, setUserData] = useState(null);
     const [pageState, setPageState] = useState("Loading");
+    const [errorData, setErrorData] = useState(null);
     
     const errorCheck = (error) => {
         console.log("Erreur API : ", error);
-        setPageState("ErrorAPI");
+        setErrorData(error);
+        setPageState("Error");
     };
 
     const responseCheck = (response) => {
@@ -45,8 +47,8 @@ const Dashboard = () => {
         switch (pageState) {
         case "Loading":
             return <LoadingPage />;
-        case "ErrorAPI":
-            return <ErrorPage />;
+        case "Error":
+            return <ErrorPage data={errorData}/>;
         case "Dashboard":
             return (
                 <div className="dashboard">

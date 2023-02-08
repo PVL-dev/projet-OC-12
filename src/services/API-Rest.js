@@ -24,7 +24,7 @@ export const getUserData = async (userId) => {
 		return { user, activity, averageSessions, performance };
     } catch (error) {
       	console.log("Impossible de charger les données du backend : ", error);
-      	return Mocker(userId);
+		return Mocker(userId);
     };
 };
 

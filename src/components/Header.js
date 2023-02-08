@@ -19,7 +19,7 @@ const Header = () => {
                         <li>Profil</li>
                     </NavLink>
                     <NavLink to="/" className="header__horizontalNav__navLink__elmt">
-                        <li>Réglage</li>
+                        <li>Réglages</li>
                     </NavLink>
                     <NavLink to="/" className="header__horizontalNav__navLink__elmt">
                         <li>Communauté</li>

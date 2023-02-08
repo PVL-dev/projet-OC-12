@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.js';
 import VerticalNav from './components/VerticalNav.js';
 import Dashboard from './pages/Dashboard.js';
+import ErrorPage from './pages/ErrorPage.js';
+import LoadingPage from './pages/LoadingPage.js';
 
 const App = () => {
   return (
@@ -11,8 +13,9 @@ const App = () => {
         <VerticalNav />
 
         <Routes>
+        <Route path='/loading' element={<LoadingPage />} />
           <Route path='/dashboard/:id' element={<Dashboard />} />
-          <Route path='*' element={<Dashboard />} />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </div>

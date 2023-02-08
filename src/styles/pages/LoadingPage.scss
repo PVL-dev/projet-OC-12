@@ -1,0 +1,49 @@
+.loading {
+    margin-left: 117px;
+    height: calc(100vh - 91px);
+    width: calc(100vw - 117px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-loader {
+        margin-top: 80px;
+        margin-bottom: 80px;
+        transform: scale(8);
+        
+        svg {
+            polyline {
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+            .back {
+                stroke: rgba($color-red,.3);
+            }
+            .front {
+                stroke: $color-red;
+                stroke-dasharray: 12, 36;
+                stroke-dashoffset: 48;
+                animation: dash 1s linear infinite;
+            }
+        }
+    }
+    
+    &-text {
+        font-size: 20px;
+        font-weight: 300;
+    }
+}
+
+@keyframes dash {
+    62% {
+        opacity: 0;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+

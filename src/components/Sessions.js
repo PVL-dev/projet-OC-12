@@ -41,7 +41,6 @@ const Sessions = ({data}) => {
                     width={20}
                     tick={{ fontSize: '10px', fill: 'white' }}
                     dy={-10}
-                    padding={{ left: 20, right: 20 }}
                     interval="preserveStartEnd"
                 />
                 <YAxis 

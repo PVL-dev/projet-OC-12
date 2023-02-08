@@ -1,0 +1,20 @@
+.error {
+    margin-left: 117px;
+    height: calc(100vh - 91px);
+    width: calc(100vw - 117px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: $color-red;
+
+    h1 {
+        font-size: 250px;
+    }
+    p {
+        font-size: 70px;
+    }
+}
+

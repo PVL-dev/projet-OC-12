@@ -11,13 +11,33 @@ export default class DatasFormater {
     sessionsDatas(data) {
         const abbreviatedDays = ["L", "M", "M", "J", "V", "S", "D"];
 
-        return data.sessions.map((elmt, i) => {
-            const datas = elmt.sessionLength;
-            return ({
-                abbreviatedDay: abbreviatedDays[i],
-                duration: datas
-            })
+        const genDatas = () => {
+            const rawDatas = [];
+            data.sessions.forEach((elmt, i) => {
+                const datas = elmt.sessionLength;
+                rawDatas.push({
+                    abbreviatedDay: abbreviatedDays[i],
+                    duration: datas
+                })
+            });
+            
+            console.log(rawDatas);
+            return rawDatas;
+        };
+        const finalDatas = genDatas();
+        
+        const datasLength = finalDatas.length;
+        finalDatas.unshift({
+            abbreviatedDay: " ",
+            duration: finalDatas[0].duration
         });
+        finalDatas.push({
+            abbreviatedDay: " ",
+            duration: finalDatas[datasLength - 1].duration
+        });
+        console.log(finalDatas);
+
+        return finalDatas;
     };
 
 

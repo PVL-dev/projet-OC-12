@@ -1,11 +1,24 @@
 import React from 'react';
 
-const ErrorPage = () => {
+const ErrorPage = (error) => {
+    const errorType = (type) => {
+        console.log(type.data);
+
+        switch (type.data) {
+            case undefined:
+                return "Page introuvable";
+            case "Utilisateur inconnu":
+                return "Utilisateur inconnu";
+            default:
+                return "Page introuvable";
+        };
+    };
+
     return (
         <div className="error">
-            <div className="error-container">
-                Erreur !
-            </div>
+            <h1>404</h1>
+            <p>Erreur :</p>
+            <p>{errorType(error)}</p>
         </div>
     );
 };

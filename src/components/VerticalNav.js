@@ -5,6 +5,11 @@ import { ReactComponent as IcoBodybuilding } from '../assets/icons/verticalNav/b
 import { ReactComponent as IcoSwimming } from '../assets/icons/verticalNav/swimming.svg';
 import { ReactComponent as IcoYoga } from '../assets/icons/verticalNav/yoga.svg';
 
+/**
+ * Vertical Nav
+ * 
+ * @component Vertical bar of navigation to be place on the left of the app screen
+ */
 const VerticalNav = () => {
     return (
         <nav className="verticalNav">

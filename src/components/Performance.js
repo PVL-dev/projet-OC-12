@@ -1,8 +1,15 @@
 import React from 'react';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
 import DatasFormater from '../services/DatasFormater';
+import PropTypes from 'prop-types';
 
-const Performance = ({data}) => {
+/**
+ * Performance chart
+ * 
+ * @param {object} data Object as { userId, kind, data[{ value, kind }] }
+ * @component Generated performance radar chart with personnal datas of user
+ */
+const Performance = ({ data }) => {
     const recoverDatas = new DatasFormater();
     const datas = recoverDatas.performanceDatas(data);
 
@@ -26,4 +33,8 @@ const Performance = ({data}) => {
 };
 
 export default Performance;
+
+Performance.propTypes = {
+    data: PropTypes.object.isRequired
+};
 

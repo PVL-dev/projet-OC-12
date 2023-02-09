@@ -2,6 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as Logo } from '../assets/logo/logo.svg';
 
+/**
+ * Header
+ * 
+ * @component Header containing logo and navigation to be place on the top of the app screen
+ */
 const Header = () => {
     return (
         <header className="header">

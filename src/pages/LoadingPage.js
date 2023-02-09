@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * Generate LoadingPage in DOM
+ *
+ * Simple loading page with animated loader.
+ *
+ * @component Loading page 
+ */
 const LoadingPage = () => {
     return (
         <div className="loading">

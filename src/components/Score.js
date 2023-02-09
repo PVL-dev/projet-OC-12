@@ -1,8 +1,15 @@
 import React from 'react';
 import { ResponsiveContainer, RadialBarChart, PolarAngleAxis, RadialBar, Legend } from 'recharts';
 import DatasFormater from '../services/DatasFormater';
+import PropTypes from 'prop-types';
 
-const Score = ({data}) => {
+/**
+ * Score chart
+ * 
+ * @param {object} data Object as { id, keyData, todayScore, userInfos }
+ * @component Generated score radial chart with daily score formatted
+ */
+const Score = ({ data }) => {
     const recoverDatas = new DatasFormater();
     const datas = recoverDatas.scoreDatas(data);
 
@@ -67,4 +74,8 @@ const Score = ({data}) => {
 };
 
 export default Score;
+
+Score.propTypes = {
+    data: PropTypes.object.isRequired
+};
 

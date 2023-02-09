@@ -1,8 +1,15 @@
 import React from 'react';
 import { ResponsiveContainer, LineChart, XAxis, YAxis, Line, Tooltip, Rectangle } from 'recharts';
 import DatasFormater from '../services/DatasFormater';
+import PropTypes from 'prop-types';
 
-const Sessions = ({data}) => {
+/**
+ * Sessions chart
+ * 
+ * @param {object} data Object as { userId, sessions[{ day, sessionLength }] }
+ * @component Generated sessions line chart with weekly progression of user
+ */
+const Sessions = ({ data }) => {
     const recoverDatas = new DatasFormater();
     const datas = recoverDatas.sessionsDatas(data);
 
@@ -101,4 +108,8 @@ const Sessions = ({data}) => {
 };
 
 export default Sessions;
+
+Sessions.propTypes = {
+    data: PropTypes.object.isRequired
+};
 

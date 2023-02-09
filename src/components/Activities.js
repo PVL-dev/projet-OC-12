@@ -1,8 +1,15 @@
 import React from 'react';
 import { ResponsiveContainer, BarChart, XAxis, YAxis, CartesianGrid, Bar, Tooltip, Legend } from 'recharts';
 import DatasFormater from '../services/DatasFormater';
+import PropTypes from 'prop-types';
 
-const Activities = ({data}) => {
+/**
+ * Activities chart
+ * 
+ * @param {object} data Object as { userId, sessions[{ day, kilogram, calories }] }
+ * @component Generated activities bar chart with last 7 days datas of user
+ */
+const Activities = ({ data }) => {
     const recoverDatas = new DatasFormater();
     const datas = recoverDatas.activitiesDatas(data);
     
@@ -92,4 +99,8 @@ const Activities = ({data}) => {
 };
 
 export default Activities;
+
+Activities.propTypes = {
+    data: PropTypes.object.isRequired
+};
 

@@ -9,6 +9,19 @@ import Performance from '../components/Performance';
 import Score from '../components/Score';
 import NutritionTile from '../components/NutritionTile';
 
+/**
+ * Generate dashboard in DOM
+ *
+ * The id is defined according to the number in the url, just after dashbaord/ .
+ *
+ * First, the data is fetched from the API (in API-REST.js)
+ * If no data is retrieved from the api, we use the mocked data with same id.
+ *
+ * If the data is still not returned, the user is redirected on the error page.
+ *
+ * @param {object} userData Object with all user infos as { user, activity, averageSessions, performance }.
+ * @component Dashboard page containing personnalized user sport statistics.
+ */
 const Dashboard = () => {
     const {id} = useParams();
     const [userData, setUserData] = useState(null);

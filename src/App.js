@@ -5,6 +5,15 @@ import Dashboard from './pages/Dashboard.js';
 import ErrorPage from './pages/ErrorPage.js';
 import LoadingPage from './pages/LoadingPage.js';
 
+/**
+ * Generate Application in DOM
+ * 
+ * The "App" constant returns a div with all the components and Routes of the app.
+ * 
+ * @returns Router component
+ * @returns {reactElement}
+ */
+
 const App = () => {
   return (
     <div id="App">

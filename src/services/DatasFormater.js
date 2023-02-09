@@ -1,3 +1,8 @@
+/** Modeling class to format data for charts
+ * 
+ * @class DatasFormater class can be called with four methods as { activitiesDatas, sessionsDatas, performanceDatas, scoreDatas }.
+ * One method per graph.
+ */
 export default class DatasFormater {
     activitiesDatas(data) {
         return data.sessions.map((elmt, i) => ({
@@ -21,10 +26,10 @@ export default class DatasFormater {
                 })
             });
             
-            console.log(rawDatas);
+            //console.log(rawDatas);
             return rawDatas;
         };
-        const finalDatas = genDatas();
+        /*const finalDatas = genDatas();
         
         const datasLength = finalDatas.length;
         finalDatas.unshift({
@@ -35,9 +40,9 @@ export default class DatasFormater {
             abbreviatedDay: " ",
             duration: finalDatas[datasLength - 1].duration
         });
-        console.log(finalDatas);
+        console.log(finalDatas);*/
 
-        return finalDatas;
+        return genDatas(); //finalDatas;
     };
 
 

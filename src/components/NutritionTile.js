@@ -3,13 +3,21 @@ import { ReactComponent as CaloriesIcon } from '../assets/icons/dashboard/calori
 import { ReactComponent as ProteinsIcon } from '../assets/icons/dashboard/proteins.svg';
 import { ReactComponent as CarbohydratesIcon } from '../assets/icons/dashboard/carbohydrates.svg';
 import { ReactComponent as FatsIcon } from '../assets/icons/dashboard/fats.svg';
+import PropTypes from 'prop-types';
 
-const NutritionTile = ({type, data}) => {
+/**
+ * Nutrition tiles
+ * 
+ * @param {string} type Value gives the type between @exemple calories, proteins, carbohydrates, fats
+ * @param {object} data Values depending of type
+ * @component Generated nutrition tile with SVG Icon and value
+ */
+const NutritionTile = ({ type, data }) => {
     const tileBackground = {
         calories: "calories",
         proteins: "proteins",
         carbohydrates: "carbohydrates",
-        fats: "fats",
+        fats: "fats"
     };
 
     const tileImg = (type) => {
@@ -67,4 +75,9 @@ const NutritionTile = ({type, data}) => {
 };
 
 export default NutritionTile;
+
+NutritionTile.propTypes = {
+    type: PropTypes.string.isRequired,
+    data: PropTypes.object.isRequired
+};
 

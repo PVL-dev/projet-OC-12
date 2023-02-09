@@ -2,10 +2,11 @@ import axios from "axios";
 import mockedDatas from "./mockedDatas";
 
 /**
- * @param {number} user Id
+ * Fetching datas from API
+ * 
+ * @param {number} userId
  * @return {object} this object group user infos as { user, activity, averageSessions, performance }
  */
-
 export const getUserData = async (userId) => {
     const url = "http://localhost:3005/user/";
     try {
@@ -28,6 +29,12 @@ export const getUserData = async (userId) => {
     };
 };
 
+/**
+ * Use Mocked Datas if call API did not work
+ * 
+ * @param {number} Id
+ * @return {object} this object group user infos as { user, activity, averageSessions, performance }
+ */
 const Mocker = (Id) => {
     const userId = parseInt(Id);
   

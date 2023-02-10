@@ -1,6 +1,6 @@
 .dashboard {
     margin-left: 117px;
-    min-width: 967px;
+    min-width: 907px;
 
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@
         height: calc(100vh - 91px);
         min-height: 689px;
         width: calc(100vw - 117px);
-        min-width: 927px;
+        min-width: 867px;
         max-width: 1200px;
 
         display: flex;
@@ -50,7 +50,7 @@
         .main-tiles-container {
             margin-top: 4%;
             height: 83%;
-            min-width: 930px;
+            min-width: 870px;
             max-width: 1370px;
     
             display: flex;
@@ -83,7 +83,7 @@
                     > div {
                         height: 100%;
                         width: calc(100% / 3 - 15px);
-                        min-width: 230px;
+                        min-width: 212px;
                         max-width: 258px;
                         
                         border-radius: 6px;

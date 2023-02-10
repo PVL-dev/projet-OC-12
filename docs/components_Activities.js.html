@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Activities.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Activities.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { ResponsiveContainer, BarChart, XAxis, YAxis, CartesianGrid, Bar, Tooltip, Legend } from 'recharts';
+import DatasFormater from '../services/DatasFormater';
+import PropTypes from 'prop-types';
+
+/**
+ * Activities chart
+ * 
+ * @param {object} data Object as { userId, sessions[{ day, kilogram, calories }] }
+ * @component Generated activities bar chart with last 7 days datas of user
+ */
+const Activities = ({ data }) => {
+    const recoverDatas = new DatasFormater();
+    const datas = recoverDatas.activitiesDatas(data);
+    
+    const CustomTooltip = ({ active, payload }) => {
+        if (active &amp;&amp; payload &amp;&amp; payload.length) {
+            return (
+              &lt;div className="custom-tooltip">
+                &lt;p className="custom-tooltip__kilos">{`${payload[0].value}kg`}&lt;/p>
+                &lt;p className="custom-tooltip__calories">{`${payload[1].value}kcal`}&lt;/p>
+              &lt;/div>
+            );
+        };
+    };
+
+    const CustomLegend = () => {
+        return (
+            &lt;div className="text">
+                &lt;div className="text__title">
+                    Activité quotidienne
+                &lt;/div>
+                &lt;ul className="text__legend">
+                    &lt;li className="text__legend-weight">
+                        &lt;span className="black-dot">•&lt;/span>
+                        &lt;p>Poids (kg)&lt;/p>
+                    &lt;/li>
+                    &lt;li className="text__legend-calories">
+                        &lt;span className="red-dot">•&lt;/span>
+                        &lt;p>Calories brulées (kCal)&lt;/p>
+                    &lt;/li>
+                &lt;/ul>
+            &lt;/div>
+        );
+    }; 
+
+    return (
+        &lt;div className="activities-chart">
+            &lt;ResponsiveContainer className="activities-chart__graph" width="100%" height="100%">
+                &lt;BarChart width="100%" height="100%" data={datas}>
+                    &lt;Legend
+                        verticalAlign="top"
+                        content={CustomLegend}
+                    />
+                    &lt;XAxis
+                        dataKey={"day"}
+                        axisLine={false}
+                        tickLine={false}
+                        dy={10}
+                    />
+                    &lt;YAxis
+                        orientation="left"
+                        axisLine={false}
+                        tickLine={false}
+                        yAxisId="kilos"
+                        domain={["dataMin - 2", "dataMax + 2"]}
+                    />
+                    &lt;YAxis
+                        orientation="right"
+                        axisLine={false}
+                        tickLine={false}
+                        yAxisId="calories"
+                    />
+                    &lt;CartesianGrid vertical={false} strokeDasharray="4 4"/>
+                    &lt;Bar
+                        className="recharts-bar-kilos"
+                        dataKey={"kilos"}
+                        barSize={6}
+                        radius={[10, 10, 0, 0]}
+                        yAxisId="kilos"
+                    />
+                    &lt;Bar
+                        className="recharts-bar-calories"
+                        dataKey={"calories"}
+                        barSize={6}
+                        radius={[10, 10, 0, 0]}
+                        yAxisId="calories"
+                    />
+                    &lt;Tooltip
+                        content={CustomTooltip}
+                        wrapperStyle={{ outline: 'none' }}
+                        cursor={{ fill: 'gray', opacity: 0.1 }}
+                        allowEscapeViewBox={{x: true}}
+                    />
+                &lt;/BarChart>
+            &lt;/ResponsiveContainer>
+        &lt;/div>
+    );
+};
+
+export default Activities;
+
+Activities.propTypes = {
+    data: PropTypes.object.isRequired
+};
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Activities">Activities</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#ErrorPage">ErrorPage</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LoadingPage">LoadingPage</a></li><li><a href="global.html#Mocker">Mocker</a></li><li><a href="global.html#NutritionTile">NutritionTile</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sessions">Sessions</a></li><li><a href="global.html#VerticalNav">VerticalNav</a></li><li><a href="global.html#getUserData">getUserData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Thu Feb 09 2023 21:36:45 GMT+0400 (heure de La Réunion)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

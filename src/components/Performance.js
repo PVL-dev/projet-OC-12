@@ -15,12 +15,11 @@ const Performance = ({ data }) => {
 
     return (
         <ResponsiveContainer className="performance-chart__graph" width="100%" height="100%">
-            <RadarChart cx="50%" cy="50%" outerRadius="68%" data={datas}>
+            <RadarChart cx="50%" cy="50%" outerRadius="65%" data={datas}>
                 <PolarGrid stroke="white" />
                 <PolarAngleAxis
                     stroke="white"
                     dataKey={"category"}
-                    tick={{ fontSize: '10px' }}
                     tickLine={false}
                 />
                 <Radar

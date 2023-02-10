@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Sessions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Sessions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { ResponsiveContainer, LineChart, XAxis, YAxis, Line, Tooltip, Rectangle } from 'recharts';
+import DatasFormater from '../services/DatasFormater';
+import PropTypes from 'prop-types';
+
+/**
+ * Sessions chart
+ * 
+ * @param {object} data Object as { userId, sessions[{ day, sessionLength }] }
+ * @component Generated sessions line chart with weekly progression of user
+ */
+const Sessions = ({ data }) => {
+    const recoverDatas = new DatasFormater();
+    const datas = recoverDatas.sessionsDatas(data);
+
+    const CustomTooltip = ({ active, payload }) => {
+        if (active &amp;&amp; payload &amp;&amp; payload.length) {
+            return (
+                &lt;div className="custom-tooltip">
+                    &lt;p className="custom-tooltip__kilos">{`${payload[0].value} min`}&lt;/p>
+                &lt;/div>
+            );
+        };
+    };
+    const CustomCursor = (props) => {
+        if (props) {
+            const { points, width, height } = props;
+            const { x, y } = points[0];
+            return (
+                &lt;Rectangle
+                    fill={"#00000033"}
+                    x={x}
+                    y={y}
+                    width={width}
+                    height={height * 2}
+                />
+            );
+        };
+    };
+    
+    return (
+        &lt;ResponsiveContainer className="sessions-chart__graph" width="100%" height="100%">
+            &lt;LineChart width="100%" height="100%" data={datas} margin={0}>
+                &lt;XAxis
+                    dataKey={"abbreviatedDay"}
+                    axisLine={false}
+                    tickLine={false}
+                    width={20}
+                    tick={{ fontSize: '10px', fill: 'white' }}
+                    dy={-10}
+                    interval="preserveStartEnd"
+                />
+                &lt;YAxis 
+                    hide={true}
+                    domain={["dataMin-10", "dataMax+20"]}
+                    padding={{bottom : 50, top: 30}}
+                />
+
+                &lt;defs>
+                    &lt;linearGradient id="linearGradient">
+                        &lt;stop offset="0%" stopColor="#FFFFFF67"/>
+                        &lt;stop offset="100%" stopColor="#FFFFFF"/>
+                    &lt;/linearGradient>
+                &lt;/defs>
+                &lt;Line
+                    type="monotone"
+                    dataKey={"duration"}
+                    stroke="url(#linearGradient)"
+                    strokeWidth={1.5}
+                    dot={false}
+                    activeDot={{
+                        stroke: "rgba(255, 255, 255, 0.4)",
+                        strokeWidth: 5
+                    }}
+                />
+
+                &lt;text
+                    x="35"
+                    y="30"
+                    textAnchor="start"
+                    dominantBaseline="hanging"
+                    className="line1"
+                    fill="white"
+                >
+                Durée moyenne des
+                &lt;/text>
+
+                &lt;text
+                    x="35"
+                    y="50"
+                    textAnchor="start"
+                    dominantBaseline="hanging"
+                    className="line2"
+                    fill="white"
+                >
+                sessions
+                &lt;/text>
+
+                &lt;Tooltip
+                    content={&lt;CustomTooltip />}
+                    wrapperStyle={{ outline: 'none' }}
+                    cursor={&lt;CustomCursor />}
+                    isAnimationActive={true}
+                />
+            &lt;/LineChart>
+        &lt;/ResponsiveContainer>
+    );
+};
+
+export default Sessions;
+
+Sessions.propTypes = {
+    data: PropTypes.object.isRequired
+};
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Activities">Activities</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#ErrorPage">ErrorPage</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#LoadingPage">LoadingPage</a></li><li><a href="global.html#Mocker">Mocker</a></li><li><a href="global.html#NutritionTile">NutritionTile</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#Sessions">Sessions</a></li><li><a href="global.html#VerticalNav">VerticalNav</a></li><li><a href="global.html#getUserData">getUserData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Thu Feb 09 2023 21:36:45 GMT+0400 (heure de La Réunion)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
